@@ -50,7 +50,13 @@ class MainActivity : AppCompatActivity()
         //Set Up Previous Button
         previousButton = findViewById(R.id.previous_button)
         previousButton.setOnClickListener {
-            currentIndex = (currentIndex - 1) % questionBank.size
+            if(currentIndex == 0)
+            {
+                currentIndex = questionBank.size - 1
+            }
+            else {
+                currentIndex = (currentIndex - 1) % questionBank.size
+            }
             Log.d(TAG, "Current Index: $currentIndex")
             updateQuestion()
         }
